@@ -7,53 +7,38 @@ from typing import Any, Dict, List, Tuple, Union
 # ────────────────────────────────────────────────
 
 #   Common category constants (helps with sorting)
-CATEGORY = "_Jus Multifruit/Type conversions"
+CATEGORY = "_Jus Multifruit/Debug"
 
-class IntToString:
+class DebugPythonTypesToConsole:
     """
-    Converts an Int to a String
+    Allows all the different "Python datatypes" in, and print it out in the console.
     """
     @classmethod
     def INPUT_TYPES(cls):
         return {
             "required": {
                 "input_INT": ("INT", {"default": 0}),
-            }
-        }
-
-    RETURN_TYPES = ("STRING",)
-    RETURN_NAMES = ("output_string",)
-    FUNCTION = "execute"
-    CATEGORY = CATEGORY
-
-    @staticmethod
-    def execute(input_INT: int) -> str:
-        return str(input_INT)
-
-class StringToInt:
-    """
-    Converts an String to an Int
-    """
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
+                "input_FLOAT": ("FLOAT", {"default": 0.0}),
                 "input_STRING": ("STRING", {"default": ""}),
+                "input_BOOLEAN": ("BOOLEAN", {"default": False}),
             }
         }
 
-    RETURN_TYPES = ("INT",)
-    RETURN_NAMES = ("output_INT",)
+    RETURN_TYPES = ()
     FUNCTION = "execute"
     CATEGORY = CATEGORY
 
     @staticmethod
-    def execute(input_STRING: str) -> int:
-        try:
-            r = int(input_STRING)
-        except ValueError:
-            logging.exception("cannot convert input value. returning 0.")
-            r = 0
-        return r
+    def execute(input_INT: int, input_FLOAT: float, input_STRING: str, input_BOOLEAN: bool) -> str:
+        formatted_output = (
+            "DebugPythonTypesToConsole Output:\n"
+            f"  - input_INT: {input_INT}\n"
+            f"  - input_FLOAT: {input_FLOAT}\n"
+            f"  - input_STRING: '{input_STRING}'\n"
+            f"  - input_BOOLEAN: {input_BOOLEAN}\n"
+        )
+        print(formatted_output)
+        return ()
+    
 
 # More nodes can be added here...
