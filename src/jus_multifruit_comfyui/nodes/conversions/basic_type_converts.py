@@ -27,8 +27,8 @@ class IntToString:
     CATEGORY = CATEGORY
 
     @staticmethod
-    def execute(input_INT: int) -> str:
-        return str(input_INT)
+    def execute(input_INT: int) -> Tuple[str]:
+        return ( str(input_INT), )
 
 class StringToInt:
     """
@@ -48,12 +48,12 @@ class StringToInt:
     CATEGORY = CATEGORY
 
     @staticmethod
-    def execute(input_STRING: str) -> int:
+    def execute(input_STRING: str) -> Tuple[int]:
         try:
-            r = int(input_STRING)
+            r =  ( int(input_STRING), )
         except ValueError:
             logging.exception("cannot convert input value. returning 0.")
-            r = 0
+            r = ( 0, )
         return r
 
 # More nodes can be added here...
